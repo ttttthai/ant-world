@@ -1,0 +1,277 @@
+/* Scroll container — tall to create scroll room */
+.origin-tab-space {
+  height: calc(16 * 100vh);
+  position: relative;
+}
+
+/* Fixed viewport fills the screen */
+.space-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 50%, #0a0806 0%, #050403 100%);
+}
+
+.space-viewport canvas {
+  display: block;
+}
+
+/* Title overlay — top center */
+.space-title-overlay {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.space-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--cream);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  opacity: 0.35;
+  margin: 0;
+}
+
+/* Scroll hint */
+.space-scroll-hint {
+  position: absolute;
+  bottom: var(--sp-3xl);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--sand-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-sm);
+  opacity: 0.6;
+}
+
+.scroll-hint-arrow {
+  font-size: 1.2rem;
+  color: var(--leaf);
+  opacity: 0.5;
+}
+
+/* Info Card — left side overlay */
+.space-info-card {
+  position: absolute;
+  left: var(--sp-xl);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--glass-heavy);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(90, 173, 10, 0.08);
+  z-index: 20;
+}
+
+.space-info-card::-webkit-scrollbar {
+  width: 3px;
+}
+
+.space-info-card::-webkit-scrollbar-thumb {
+  background: var(--white-8);
+  border-radius: 2px;
+}
+
+.space-card-illustration {
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  max-height: 160px;
+}
+
+.space-card-illustration svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.space-card-content {
+  padding: var(--sp-lg);
+}
+
+.space-card-era {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--clay);
+  display: block;
+  margin-bottom: var(--sp-xs);
+}
+
+.space-card-year {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--leaf);
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.02em;
+}
+
+.space-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: var(--sp-sm);
+  font-weight: 500;
+}
+
+.space-card-extinct {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e05530;
+  background: rgba(224, 85, 48, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(224, 85, 48, 0.2);
+  margin-bottom: var(--sp-sm);
+}
+
+.space-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--sand);
+  line-height: 1.75;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Dot Navigation — right edge */
+.space-dot-nav {
+  position: absolute;
+  right: var(--sp-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 20;
+}
+
+.space-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: none;
+  border: none;
+}
+
+.space-dot-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sand-muted);
+  opacity: 0.3;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.space-dot:hover .space-dot-pip {
+  opacity: 0.8;
+  transform: scale(1.4);
+  background: var(--cream);
+}
+
+.space-dot.active .space-dot-pip {
+  width: 8px;
+  height: 8px;
+  background: var(--leaf);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(90, 173, 10, 0.5);
+}
+
+.space-dot-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--leaf);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  position: absolute;
+  right: 22px;
+}
+
+/* Era badge — bottom center */
+.space-era-badge {
+  position: absolute;
+  bottom: var(--sp-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--sand-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border-subtle);
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .space-info-card {
+    left: var(--sp-md);
+    right: var(--sp-md);
+    width: auto;
+    top: auto;
+    bottom: 80px;
+    transform: none;
+    max-height: 45vh;
+  }
+
+  .space-card-illustration {
+    max-height: 100px;
+  }
+
+  .space-dot-nav {
+    right: var(--sp-sm);
+    gap: 4px;
+  }
+
+  .space-dot-pip {
+    width: 5px;
+    height: 5px;
+  }
+
+  .space-dot-label {
+    display: none;
+  }
+
+  .space-title {
+    font-size: 1rem;
+  }
+}

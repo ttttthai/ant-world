@@ -1,0 +1,686 @@
+.species-tab {
+  padding: 72px var(--sp-xl) var(--sp-3xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.species-hero {
+  text-align: center;
+  padding: var(--sp-3xl) 0 var(--sp-lg);
+}
+
+.species-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  color: var(--cream);
+  font-weight: 400;
+  margin: var(--sp-sm) 0 var(--sp-md);
+  letter-spacing: -0.02em;
+}
+
+.species-subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--sand-muted);
+  max-width: 460px;
+  margin: 0 auto var(--sp-xl);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Controls */
+.species-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-lg);
+  flex-wrap: wrap;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 3px;
+  background: var(--white-5);
+  padding: 3px;
+  border-radius: var(--r-full);
+}
+
+.filter-pill {
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--sand-muted);
+  border-radius: var(--r-full);
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.filter-pill:hover { color: var(--cream); }
+.filter-pill.active {
+  background: var(--white-8);
+  color: var(--cream);
+  border: 1px solid var(--border-light);
+}
+
+.compare-toggle {
+  padding: 0.45rem 1.2rem;
+  background: var(--white-5);
+  border: 1px solid var(--border-subtle);
+  color: var(--sand-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-radius: var(--r-full);
+  transition: all 0.2s;
+}
+
+.compare-toggle:hover,
+.compare-toggle.active {
+  background: var(--leaf-glow);
+  border-color: var(--border-accent);
+  color: var(--leaf);
+}
+
+.compare-hint {
+  text-align: center;
+  color: var(--sand-muted);
+  font-style: italic;
+  font-size: 0.88rem;
+  margin-bottom: var(--sp-md);
+}
+
+/* Grid */
+.species-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: var(--sp-md);
+  padding: var(--sp-md) 0;
+}
+
+.species-card {
+  position: relative;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.species-card:hover {
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.species-card.selected {
+  border-color: var(--leaf);
+  box-shadow: var(--shadow-glow);
+}
+
+.species-card-accent {
+  height: 3px;
+  width: 100%;
+}
+
+.species-card-body {
+  padding: var(--sp-lg);
+}
+
+.species-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-sm);
+}
+
+.species-card-superpower {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clay);
+}
+
+.species-card-size {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: var(--sand-muted);
+  opacity: 0.6;
+}
+
+.species-card-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 0.15rem;
+  font-weight: 500;
+}
+
+.species-card-sci {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--sand-muted);
+  margin-bottom: var(--sp-md);
+}
+
+/* Mini trait bars on card */
+.species-card-traits-mini {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+}
+
+.mini-trait {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mini-trait-bar {
+  height: 3px;
+  background: var(--white-5);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mini-trait-fill {
+  height: 100%;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.mini-trait-label {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand-muted);
+  opacity: 0.5;
+}
+
+.species-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sp-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.species-card-subfamily {
+  font-size: 0.68rem;
+  color: var(--sand-muted);
+  opacity: 0.6;
+}
+
+.species-card-arrow {
+  font-size: 0.85rem;
+  color: var(--sand-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s;
+}
+
+.species-card:hover .species-card-arrow {
+  opacity: 0.6;
+  transform: translateX(0);
+}
+
+/* Detail Modal */
+.species-detail-overlay {
+  position: fixed !important;
+  inset: 0;
+  z-index: 200;
+  background: rgba(8, 6, 3, 0.88);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-xl);
+  overflow-y: auto;
+}
+
+.species-detail {
+  position: relative;
+  background: var(--soil-mid);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  max-width: 820px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.detail-close {
+  position: absolute;
+  top: var(--sp-lg);
+  right: var(--sp-lg);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white-5);
+  border: 1px solid var(--border-subtle);
+  color: var(--sand-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 5;
+}
+
+.detail-close:hover {
+  background: var(--white-8);
+  color: var(--cream);
+  border-color: var(--border-light);
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-lg);
+  padding: var(--sp-xl) var(--sp-xl) var(--sp-lg);
+}
+
+.detail-color-bar {
+  width: 5px;
+  height: 72px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.detail-name {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--cream);
+  font-weight: 500;
+  margin: 0.2rem 0;
+  letter-spacing: -0.02em;
+}
+
+.detail-sci {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--sand-muted);
+  font-size: 0.95rem;
+}
+
+/* Detail Intro (description + funfact) */
+.detail-intro {
+  padding: 0 var(--sp-xl) var(--sp-lg);
+}
+
+.detail-description {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--sand);
+  line-height: 1.8;
+  margin-bottom: var(--sp-lg);
+  font-weight: 300;
+}
+
+.detail-funfact {
+  background: var(--leaf-glow);
+  border-left: 3px solid var(--leaf);
+  padding: var(--sp-md) var(--sp-lg);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+
+.funfact-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--leaf);
+  display: block;
+  margin-bottom: var(--sp-xs);
+}
+
+.detail-funfact p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--sand);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Trait Profile Section */
+.detail-traits-section {
+  padding: 0 var(--sp-xl) var(--sp-lg);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--sp-lg);
+}
+
+.traits-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--cream);
+  margin-bottom: var(--sp-md);
+  font-weight: 500;
+}
+
+.traits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--sp-xl);
+}
+
+/* Section Navigation Tabs */
+.detail-section-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 0 var(--sp-xl);
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--sp-md);
+}
+
+.detail-section-tabs::-webkit-scrollbar { display: none; }
+
+.section-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  background: none;
+  color: var(--sand-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  min-width: 58px;
+}
+
+.section-tab:hover {
+  color: var(--cream);
+  background: var(--white-5);
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+}
+
+.section-tab.active {
+  background: var(--white-5);
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+}
+
+.section-tab-icon {
+  font-size: 0.9rem;
+}
+
+.section-tab-label {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Active Section Content */
+.detail-active-section {
+  padding: var(--sp-lg) var(--sp-xl) var(--sp-xl);
+}
+
+/* Attribute Section */
+.attr-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+}
+
+.attr-section-icon {
+  font-size: 1rem;
+}
+
+.attr-section-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--cream);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.attr-section-line {
+  flex: 1;
+  height: 1px;
+  opacity: 0.3;
+}
+
+.attr-section-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.attr-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--sp-md);
+}
+
+.attr-row:last-child { border-bottom: none; }
+
+.attr-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sand-muted);
+  flex-shrink: 0;
+}
+
+.attr-value {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--cream);
+  text-align: right;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.trait-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.trait-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand-muted);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.trait-track {
+  flex: 1;
+  height: 6px;
+  background: var(--white-5);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.trait-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.trait-value {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--sand-muted);
+  width: 26px;
+  text-align: right;
+}
+
+/* Compare View */
+.compare-view {
+  padding: var(--sp-lg) var(--sp-xl);
+  margin-bottom: var(--sp-xl);
+}
+
+.compare-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xl);
+  margin-bottom: var(--sp-lg);
+}
+
+.compare-species {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.compare-species h4 {
+  font-family: var(--font-display);
+  color: var(--cream);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.compare-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.compare-vs {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--sand-muted);
+  letter-spacing: 0.15em;
+}
+
+.compare-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.compare-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.compare-bar-left {
+  flex: 1;
+  height: 8px;
+  background: var(--white-5);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.compare-bar-right {
+  flex: 1;
+  height: 8px;
+  background: var(--white-5);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compare-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.compare-trait-label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand-muted);
+  width: 80px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* 3D Ant Model Viewer */
+.species-card-3d {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  cursor: grab;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.species-card-3d:active {
+  cursor: grabbing;
+}
+
+.ant-model-viewer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.ant-model-snapshot {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ant-model-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-model-loading-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.5); }
+}
+
+.detail-3d-viewer {
+  width: 100%;
+  height: 280px;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: grab;
+  position: relative;
+}
+
+.detail-3d-viewer:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 768px) {
+  .species-tab { padding: 72px var(--sp-md) var(--sp-2xl); }
+  .detail-grid { grid-template-columns: 1fr; }
+  .species-controls { flex-direction: column; gap: var(--sp-md); }
+  .filter-pills { flex-wrap: wrap; justify-content: center; }
+  .species-card-3d { height: 120px; }
+  .detail-3d-viewer { height: 200px; }
+}
