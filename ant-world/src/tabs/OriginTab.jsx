@@ -2,11 +2,30 @@ import { useState, useRef, useMemo, useEffect, Suspense, useCallback } from 'rea
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useIsPresent } from 'framer-motion';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
+import { Text, OrbitControls, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 import { timelineEvents } from '../data/ants';
 import { illustrations } from '../components/TimelineIllustrations';
+import AntModel from '../components/ant3d/AntModel';
 import './OriginTab.css';
+
+// Map each timeline event (by originalIndex) to its species 3D model
+const eventSpeciesMap = {
+  0: 'hymenoptera-ancestor',   // 168 MYA — Hymenoptera ancestor
+  1: 'proto-ant-wasp',         // 130 MYA — Proto-ant wasp
+  2: 'sphecomyrma',            // 100 MYA — Sphecomyrma
+  3: 'haidomyrmex',            // 92 MYA — Haidomyrmex (extinct)
+  4: 'cretaceous-ant',         // 80 MYA — Cretaceous ant
+  5: 'cretaceous-ant',         // 66 MYA — K-Pg survivors
+  6: 'paleocene-ant',          // 60 MYA — Paleocene radiation
+  7: 'argentine',              // 50 MYA — Early diversification
+  8: 'amber-ant',              // 45 MYA — Amber-preserved ant
+  9: 'leafcutter',             // 30 MYA — Leafcutter emergence
+  10: 'army',                  // 20 MYA — Army ant lineage
+  11: 'leafcutter',            // 15 MYA — Fungus farming refinement
+  12: 'bullet',                // 5 MYA — Bullet ant lineage
+  13: 'bulldog',               // Today — Modern diversity
+};
 
 const TOTAL_DISTANCE = 560;
 
@@ -234,10 +253,40 @@ function SpaceScene({ scrollProgress }) {
   );
 }
 
+/* ─── Inline 3D Ant for Info Card ─── */
+
+function InfoCardAntScene({ speciesId }) {
+  return (
+    <>
+      {/* Studio-style lighting for the small preview */}
+      <directionalLight position={[3, 4, 3]} intensity={1.6} color="#fff5e6" />
+      <directionalLight position={[-3, 2, -1]} intensity={0.6} color="#cce0ff" />
+      <directionalLight position={[0, 2, -4]} intensity={0.5} color="#ffe8cc" />
+      <directionalLight position={[1, 5, 1]} intensity={0.3} color="#ffffff" />
+      <ambientLight intensity={0.25} />
+      <Environment preset="studio" environmentIntensity={0.4} />
+      <Suspense fallback={null}>
+        <AntModel speciesId={speciesId} autoRotate />
+      </Suspense>
+      <OrbitControls
+        enableZoom={false}
+        enablePan={false}
+        autoRotate
+        autoRotateSpeed={2}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 1.6}
+        dampingFactor={0.1}
+        enableDamping
+      />
+    </>
+  );
+}
+
 /* ─── Info Card Overlay ─── */
 
 function InfoCard({ event, index }) {
   const Illustration = illustrations[event.originalIndex];
+  const speciesId = eventSpeciesMap[event.originalIndex];
   const isExtinct = event.originalIndex === 3;
 
   return (
@@ -248,7 +297,30 @@ function InfoCard({ event, index }) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
-      {Illustration && (
+      {/* 3D Ant Model Preview */}
+      {speciesId && (
+        <div className="space-card-ant-viewer">
+          <Canvas
+            camera={{ position: [0, 0.2, 1], fov: 38 }}
+            dpr={[1.5, 2]}
+            gl={{
+              antialias: true,
+              alpha: true,
+              powerPreference: 'low-power',
+              toneMapping: THREE.ACESFilmicToneMapping,
+              toneMappingExposure: 1.1,
+            }}
+            style={{ background: 'transparent' }}
+          >
+            <InfoCardAntScene speciesId={speciesId} />
+          </Canvas>
+          <div className="space-card-ant-label">
+            {isExtinct ? '† Extinct species' : '3D Model'}
+          </div>
+        </div>
+      )}
+      {/* SVG illustration fallback if no 3D model */}
+      {!speciesId && Illustration && (
         <div className="space-card-illustration">
           <Illustration />
         </div>

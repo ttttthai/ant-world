@@ -91,6 +91,41 @@
   border-radius: 2px;
 }
 
+/* 3D Ant Viewer in Info Card */
+.space-card-ant-viewer {
+  position: relative;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  height: 200px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(90, 173, 10, 0.06) 0%, transparent 70%);
+}
+
+.space-card-ant-viewer canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+.space-card-ant-viewer canvas:active {
+  cursor: grabbing;
+}
+
+.space-card-ant-label {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--sand-muted);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .space-card-illustration {
   border-radius: var(--r-lg) var(--r-lg) 0 0;
   overflow: hidden;
@@ -251,6 +286,10 @@
     bottom: 80px;
     transform: none;
     max-height: 45vh;
+  }
+
+  .space-card-ant-viewer {
+    height: 150px;
   }
 
   .space-card-illustration {
