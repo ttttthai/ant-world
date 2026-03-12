@@ -69,7 +69,7 @@ function SpeciesCard({ sp, isSelected, onClick, index }) {
         <h3 className="species-card-name">{sp.name}</h3>
         <p className="species-card-sci">{sp.scientificName}</p>
         <div className="species-card-traits-mini">
-          {Object.entries(sp.traits).slice(0, 3).map(([key, val]) => (
+          {Object.entries(sp.traits).map(([key, val]) => (
             <div key={key} className="mini-trait">
               <div className="mini-trait-bar">
                 <div className="mini-trait-fill" style={{ width: `${val}%`, background: sp.color }} />
@@ -87,6 +87,100 @@ function SpeciesCard({ sp, isSelected, onClick, index }) {
   );
 }
 
+// Map qualitative text values to a 0-100 gauge rating
+const ratingKeywords = {
+  // Very low
+  'none': 10, 'minimal': 10, 'very low': 12, 'negligible': 8,
+  // Low
+  'low': 20, 'minor': 22, 'weak': 18, 'poor': 15, 'basic': 25, 'simple': 22, 'limited': 20,
+  // Moderate
+  'moderate': 45, 'medium': 50, 'average': 48, 'fair': 42,
+  // Good
+  'good': 65, 'strong': 70, 'high': 72, 'complex': 68, 'effective': 65,
+  // Very good
+  'very strong': 82, 'very good': 82, 'very high': 85, 'very complex': 85,
+  'advanced': 82, 'sophisticated': 80, 'elaborate': 78,
+  // Excellent
+  'excellent': 90, 'exceptional': 95, 'extreme': 95, 'major': 80,
+  'outstanding': 92, 'superior': 88, 'remarkable': 88,
+  // Specialist terms
+  'specialist': 70, 'generalist': 55,
+};
+
+function inferRating(value) {
+  if (value == null) return null;
+  const v = String(value).toLowerCase();
+
+  // Direct keyword match (check longer phrases first)
+  const sortedKeys = Object.keys(ratingKeywords).sort((a, b) => b.length - a.length);
+  for (const key of sortedKeys) {
+    if (v === key || v.startsWith(key + ' ') || v.startsWith(key + ',') || v.startsWith(key + ';')) {
+      return ratingKeywords[key];
+    }
+  }
+  // Partial keyword match anywhere in text
+  for (const key of sortedKeys) {
+    if (v.includes(key)) return ratingKeywords[key];
+  }
+
+  // Numeric patterns like "50x", "3,000-5,000/day"
+  const numMatch = v.match(/^(\d[\d,]*)/);
+  if (numMatch) {
+    const num = parseInt(numMatch[1].replace(/,/g, ''));
+    // Carrying capacity like "50x" → high
+    if (v.includes('x')) return Math.min(95, 30 + num);
+    // Colony size
+    if (num > 1000000) return 95;
+    if (num > 100000) return 80;
+    if (num > 10000) return 65;
+    if (num > 1000) return 50;
+    if (num > 100) return 35;
+    return 25;
+  }
+
+  // Size patterns: larger = higher
+  if (v.includes('mm')) {
+    const sizeMatch = v.match(/(\d+)-?(\d+)?mm/);
+    if (sizeMatch) {
+      const maxSize = parseInt(sizeMatch[2] || sizeMatch[1]);
+      return Math.min(95, 20 + maxSize * 3);
+    }
+  }
+
+  // Default for descriptive text — show a mid-range bar
+  return 55;
+}
+
+function AttributeGaugeRow({ label, value, color }) {
+  const rating = inferRating(value);
+  const displayValue = String(value);
+  // Truncate long values for display alongside bar
+  const shortValue = displayValue.length > 50 ? displayValue.slice(0, 47) + '…' : displayValue;
+
+  return (
+    <div className="attr-gauge-row">
+      <div className="attr-gauge-header">
+        <span className="attr-gauge-label">{label}</span>
+        <span className="attr-gauge-value">{shortValue}</span>
+      </div>
+      <div className="attr-gauge-track">
+        <motion.div
+          className="attr-gauge-fill"
+          initial={{ width: 0 }}
+          animate={{ width: `${rating}%` }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          style={{ background: `linear-gradient(90deg, ${color}88, ${color})` }}
+        />
+        <div className="attr-gauge-markers">
+          {[25, 50, 75].map(p => (
+            <div key={p} className="attr-gauge-marker" style={{ left: `${p}%` }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AttributeSection({ title, icon, rows, color }) {
   return (
     <div className="attr-section">
@@ -97,10 +191,7 @@ function AttributeSection({ title, icon, rows, color }) {
       </div>
       <div className="attr-section-rows">
         {rows.filter(([, v]) => v != null).map(([label, value]) => (
-          <div className="attr-row" key={label}>
-            <span className="attr-label">{label}</span>
-            <span className="attr-value">{value}</span>
-          </div>
+          <AttributeGaugeRow key={label} label={label} value={value} color={color} />
         ))}
       </div>
     </div>
