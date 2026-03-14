@@ -116,6 +116,7 @@ export const timelineEvents = [
 export const species = [
   {
     id: 'leafcutter',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Atta_cephalotes_casent0173617_profile_1.jpg',
     name: 'Leafcutter Ant',
     scientificName: 'Atta cephalotes',
     subfamily: 'Myrmicinae',
@@ -128,7 +129,7 @@ export const species = [
     superpower: 'Agriculture',
     description: 'The original farmers. Leafcutter ants harvest fresh vegetation not to eat, but to cultivate fungus gardens deep underground. Their colonies feature sophisticated caste systems with workers of different sizes for cutting, carrying, gardening, and defense.',
     funFact: 'A single leafcutter colony can strip a tree bare overnight. Their underground nests can be 30 meters wide with thousands of chambers.',
-    traits: { strength: 95, speed: 60, intelligence: 90, aggression: 40, social: 100 },
+    traits: { strength: 95, speed: 60, intelligence: 90, aggression: 40, social: 100, warStrategy: 75 },
 
     // Basic Identification
     genus: 'Atta',
@@ -194,6 +195,7 @@ export const species = [
   {
     id: 'bullet',
     name: 'Bullet Ant',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/83/Bullet_Ant_%28Paraponera_clavata%29_%2824502547659%29.jpg',
     scientificName: 'Paraponera clavata',
     subfamily: 'Paraponerinae',
     size: '18-30mm',
@@ -205,7 +207,7 @@ export const species = [
     superpower: 'Most painful sting',
     description: 'Named for their sting that feels like being shot. The bullet ant possesses the most painful insect sting in the world, rated 4+ on the Schmidt Pain Index. Despite their fearsome reputation, they are relatively docile unless provoked.',
     funFact: 'The Sateré-Mawé tribe uses bullet ant stings in warrior initiation rites — boys must wear gloves filled with stinging ants for 10 minutes.',
-    traits: { strength: 85, speed: 50, intelligence: 60, aggression: 70, social: 40 },
+    traits: { strength: 85, speed: 50, intelligence: 60, aggression: 70, social: 40, warStrategy: 55 },
 
     // Basic Identification
     genus: 'Paraponera',
@@ -272,6 +274,7 @@ export const species = [
     id: 'weaver',
     name: 'Weaver Ant',
     scientificName: 'Oecophylla smaragdina',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Oecophylla_smaragdina_casent0173644_profile_1.jpg',
     subfamily: 'Formicinae',
     size: '5-10mm',
     color: '#C17817',
@@ -282,7 +285,7 @@ export const species = [
     superpower: 'Living architecture',
     description: 'Master builders that create nests from living leaves. Worker ants form chains to pull leaves together while others use silk-producing larvae as living glue guns to bind the leaves. Their arboreal nests can span entire trees.',
     funFact: 'Weaver ants have been used as biological pest control in Chinese orchards for over 1,700 years — one of the oldest known biocontrol methods.',
-    traits: { strength: 70, speed: 75, intelligence: 85, aggression: 80, social: 95 },
+    traits: { strength: 70, speed: 75, intelligence: 85, aggression: 80, social: 95, warStrategy: 85 },
 
     // Basic Identification
     genus: 'Oecophylla',
@@ -350,6 +353,7 @@ export const species = [
     name: 'Armadillo Ant',
     scientificName: 'Tatuidris tatusia',
     subfamily: 'Agroecomyrmecinae',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Tatuidris_tatusia_casent0178755_profile_1.jpg',
     size: '3-4mm',
     color: '#8B6347',
     habitat: 'Leaf litter of tropical forests in Central & South America',
@@ -359,7 +363,7 @@ export const species = [
     superpower: 'Living fossil',
     description: 'One of the rarest and most enigmatic ant subfamilies. Tatuidris is named after the armadillo for its heavily sculptured, armored exoskeleton. These cryptic ants live deep in tropical leaf litter and are so rarely encountered that almost nothing is known about their biology.',
     funFact: 'Tatuidris was only described in 1999 and placed in its own subfamily. Its armored body and strange morphology make it one of the most unusual ants alive today.',
-    traits: { strength: 45, speed: 20, intelligence: 30, aggression: 20, social: 35 },
+    traits: { strength: 45, speed: 20, intelligence: 30, aggression: 20, social: 35, warStrategy: 15 },
 
     // Basic Identification
     genus: 'Tatuidris',
@@ -428,6 +432,7 @@ export const species = [
     scientificName: 'Heteroponera relicta',
     subfamily: 'Heteroponerinae',
     size: '4-7mm',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Heteroponera_brounii_casent0172107_profile_1.jpg',
     color: '#5C4033',
     habitat: 'Temperate forests of Australia and South America',
     diet: 'Small arthropods and soft-bodied invertebrates',
@@ -436,7 +441,7 @@ export const species = [
     superpower: 'Gondwanan relic',
     description: 'A living link to the ancient supercontinent Gondwana. Heteroponerinae ants are found in both Australia and South America, separated by millions of years of continental drift. These small, cryptic predators hunt through leaf litter in temperate forests.',
     funFact: 'The split distribution of Heteroponera across Australia and South America mirrors the breakup of Gondwana, making them one of the best examples of vicariance biogeography in ants.',
-    traits: { strength: 50, speed: 40, intelligence: 45, aggression: 45, social: 40 },
+    traits: { strength: 50, speed: 40, intelligence: 45, aggression: 45, social: 40, warStrategy: 30 },
 
     // Basic Identification
     genus: 'Heteroponera',
@@ -506,6 +511,7 @@ export const species = [
     subfamily: 'Dorylinae',
     size: '3-12mm',
     color: '#654321',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Eciton_burchellii.JPG',
     habitat: 'Tropical rainforests of Central & South America',
     diet: 'Other insects, small vertebrates',
     colonySize: '200,000-700,000',
@@ -513,7 +519,7 @@ export const species = [
     superpower: 'Swarm intelligence raids',
     description: 'Nomadic predators that form massive raiding columns of hundreds of thousands. Army ants don\'t build permanent nests — instead, workers link their bodies together to form a living "bivouac" around the queen and brood.',
     funFact: 'Army ant swarm raids can be 20 meters wide and capture over 30,000 prey items per day. Other species including antbirds follow the swarms to catch fleeing insects.',
-    traits: { strength: 75, speed: 85, intelligence: 80, aggression: 100, social: 95 },
+    traits: { strength: 75, speed: 85, intelligence: 80, aggression: 100, social: 95, warStrategy: 100 },
 
     // Basic Identification
     genus: 'Eciton',
@@ -584,13 +590,14 @@ export const species = [
     size: '2-3mm',
     color: '#C4956A',
     habitat: 'Deep subterranean soils of West Africa',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Apomyrma_stygia_casent0000077_profile_1.jpg',
     diet: 'Unknown — possibly ant brood raider',
     colonySize: 'Unknown, likely very small',
     lifespan: 'Unknown',
     superpower: 'Subterranean ghost',
     description: 'One of the most mysterious ants in existence. Apomyrma stygia lives entirely underground in the soils of West Africa and is so rarely collected that almost nothing is known about its natural history. Its name "stygia" refers to the River Styx — the underworld.',
     funFact: 'Apomyrma stygia has been collected fewer than a dozen times since its discovery. It is completely blind, pale, and may raid the brood of other ant species deep underground.',
-    traits: { strength: 25, speed: 20, intelligence: 25, aggression: 30, social: 30 },
+    traits: { strength: 25, speed: 20, intelligence: 25, aggression: 30, social: 30, warStrategy: 10 },
 
     // Basic Identification
     genus: 'Apomyrma',
@@ -662,12 +669,13 @@ export const species = [
     color: '#5C4033',
     habitat: 'Tropical & subtropical regions worldwide',
     diet: 'Insects, small arthropods',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Odontomachus_bauri.jpg',
     colonySize: '200-1,000',
     lifespan: 'Workers: 1-2 years, Queen: 10+ years',
     superpower: 'Fastest strike in nature',
     description: 'Possesses the fastest self-powered predatory strike in the animal kingdom. Their mandibles snap shut at 126-230 km/h in just 0.13 milliseconds. They can also use this strike to launch themselves into the air to escape threats.',
     funFact: 'Trap-jaw ants can use their mandible strike against the ground to catapult themselves 8-40 cm into the air — a biological ejection seat.',
-    traits: { strength: 80, speed: 100, intelligence: 70, aggression: 75, social: 50 },
+    traits: { strength: 80, speed: 100, intelligence: 70, aggression: 75, social: 50, warStrategy: 70 },
 
     // Basic Identification
     genus: 'Odontomachus',
@@ -740,11 +748,12 @@ export const species = [
     habitat: 'Native to South America, now invasive worldwide',
     diet: 'Honeydew, sweet substances, insects',
     colonySize: 'Supercolonies of millions to billions',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/65/Linepithema_humile_%28Mayr%2C_1868%29_-_Argentine_ant.jpg',
     lifespan: 'Workers: 1 year, Queen: 10+ years',
     superpower: 'Supercolony networking',
     description: 'Argentine ants form the largest known animal cooperative structures on Earth. Multiple queens and interconnected nests create supercolonies spanning thousands of kilometers. They have displaced native ant species across six continents through sheer numbers and cooperation.',
     funFact: 'A single Argentine ant supercolony stretches over 6,000 km along the Mediterranean coast, containing billions of workers that all recognize each other as nestmates.',
-    traits: { strength: 30, speed: 65, intelligence: 85, aggression: 60, social: 100 },
+    traits: { strength: 30, speed: 65, intelligence: 85, aggression: 60, social: 100, warStrategy: 90 },
 
     // Basic Identification
     genus: 'Linepithema',
@@ -818,10 +827,11 @@ export const species = [
     diet: 'Beltian bodies and nectar from host acacia trees',
     colonySize: '5,000-30,000',
     lifespan: 'Workers: 6 months, Queen: 5+ years',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Pseudomyrmex_ferrugineus_casent0005785_profile_1.jpg',
     superpower: 'Symbiotic guardian',
     description: 'One of nature\'s most famous mutualists. Acacia ants live inside the swollen thorns of bullhorn acacia trees, receiving food and shelter in exchange for fierce defense. They attack any herbivore that touches the tree and even prune competing vegetation nearby.',
     funFact: 'Acacia ants are so protective that they will swarm and sting large mammals like cows and giraffes that try to browse on their host tree.',
-    traits: { strength: 45, speed: 80, intelligence: 70, aggression: 90, social: 70 },
+    traits: { strength: 45, speed: 80, intelligence: 70, aggression: 90, social: 70, warStrategy: 80 },
 
     // Basic Identification
     genus: 'Pseudomyrmex',
@@ -896,9 +906,10 @@ export const species = [
     colonySize: '200-2,000',
     lifespan: 'Workers: 1-2 years, Queen: 5+ years',
     superpower: 'Solitary hunter',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Formicidae_-_Dinoponera_gigantea.JPG',
     description: 'A robust predatory ant that hunts alone rather than in swarms. Giant hunting ants are skilled individual foragers with excellent vision. They have a distinctive tuberculate (bumpy) body texture that gives them a rugged, armored appearance.',
     funFact: 'Unlike most ants, Ectatomma workers often hunt solo and can subdue prey nearly their own size using a combination of powerful mandibles and a venomous sting.',
-    traits: { strength: 80, speed: 65, intelligence: 75, aggression: 70, social: 35 },
+    traits: { strength: 80, speed: 65, intelligence: 75, aggression: 70, social: 35, warStrategy: 65 },
 
     // Basic Identification
     genus: 'Ectatomma',
@@ -974,8 +985,9 @@ export const species = [
     lifespan: 'Workers: 1-2 years, Queen: 15+ years',
     superpower: 'Jumping attack',
     description: 'Among the largest and most primitive living ants. Bulldog ants have exceptional vision, can jump several centimeters, and deliver one of the most painful ant stings. They are solitary hunters that rely on individual prowess rather than coordinated swarms.',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Myrmecia_pyriformis_%2819297704115%29.jpg',
     funFact: 'Bulldog ants can leap 3-5 cm using their powerful legs, and their sting has caused confirmed human fatalities due to anaphylactic shock — making them one of the few ants truly dangerous to people.',
-    traits: { strength: 90, speed: 85, intelligence: 65, aggression: 95, social: 25 },
+    traits: { strength: 90, speed: 85, intelligence: 65, aggression: 95, social: 25, warStrategy: 95 },
 
     // Basic Identification
     genus: 'Myrmecia',
@@ -1052,7 +1064,8 @@ export const species = [
     superpower: 'Fastest animal movement',
     description: 'Named for their habit of feeding on the blood (hemolymph) of their own larvae — a practice called non-destructive cannibalism. The larvae survive and serve as a living food bank for the colony. Their mandible snap is the fastest known animal movement.',
     funFact: 'Dracula ant mandibles can snap shut at 90 m/s (200 mph), accelerating 5,000 times faster than gravity — the fastest animal movement ever recorded, surpassing even the mantis shrimp.',
-    traits: { strength: 55, speed: 95, intelligence: 50, aggression: 60, social: 45 },
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Adetomyrma_venatrix_casent0172771_profile_1.jpg',
+    traits: { strength: 55, speed: 95, intelligence: 50, aggression: 60, social: 45, warStrategy: 60 },
 
     // Basic Identification
     genus: 'Mystrium',
@@ -1129,7 +1142,8 @@ export const species = [
     superpower: 'Egg specialist predator',
     description: 'A tiny, cryptic ant that specializes in feeding on the eggs of other arthropods, particularly spiders. Discothyrea ants have reduced eyes and live in small colonies hidden deep within leaf litter and rotting wood, rarely venturing to the surface.',
     funFact: 'Discothyrea ants have such reduced eyes that they are nearly blind, relying almost entirely on chemical senses to navigate the dark world of leaf litter and soil.',
-    traits: { strength: 20, speed: 25, intelligence: 40, aggression: 20, social: 30 },
+    traits: { strength: 20, speed: 25, intelligence: 40, aggression: 20, social: 30, warStrategy: 5 },
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Discothyrea_testacea_casent0103847_profile_1.jpg',
 
     // Basic Identification
     genus: 'Discothyrea',
@@ -1206,8 +1220,9 @@ export const species = [
     superpower: 'Phantom of the underground',
     description: 'Among the smallest and most mysterious ants on Earth. Leptanilla are completely blind, pale, and live their entire lives underground. They are so rarely encountered that most species are known from only a handful of specimens.',
     funFact: 'Leptanilla queens feed on the hemolymph of their own larvae through specialized organs — a behavior so rare it was only confirmed through careful laboratory observation.',
-    traits: { strength: 10, speed: 20, intelligence: 30, aggression: 15, social: 50 },
+    traits: { strength: 10, speed: 20, intelligence: 30, aggression: 15, social: 50, warStrategy: 10 },
 
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Leptanilla_japonica_worker_ant_lateral_view.JPG',
     // Basic Identification
     genus: 'Leptanilla',
     distribution: 'Mediterranean, Middle East, Japan, Southeast Asia; rarely collected worldwide',
@@ -1283,9 +1298,10 @@ export const species = [
     superpower: 'Living fossil',
     description: 'The sole surviving species of the subfamily Aneuretinae, making it a true living fossil. Once found across the globe in the Eocene epoch, this lineage has been reduced to a single critically endangered species in the wet forests of Sri Lanka.',
     funFact: 'Aneuretus simoni is considered one of the rarest ants in the world. Its closest relatives are known only from 40-million-year-old fossils, making it a "living fossil" of immense scientific value.',
-    traits: { strength: 25, speed: 35, intelligence: 40, aggression: 25, social: 55 },
+    traits: { strength: 25, speed: 35, intelligence: 40, aggression: 25, social: 55, warStrategy: 20 },
 
     // Basic Identification
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Aneuretus_simoni_casent0102369_profile_1.jpg',
     genus: 'Aneuretus',
     distribution: 'Endemic to wet zone rainforests of southwestern Sri Lanka',
     primaryHabitat: 'tropical forest',
@@ -1360,10 +1376,11 @@ export const species = [
     superpower: 'Oldest living ant lineage',
     description: 'Discovered in 2003, Martialis heureka ("ant from Mars") is the most basal living ant lineage, branching off before all other living ants. It is pale, blind, and lives underground. Only a few specimens have ever been collected.',
     funFact: 'When Martialis heureka was discovered, its name literally translates to "ant from Mars, eureka!" because it was so unlike any known ant that scientists compared it to finding life on another planet.',
-    traits: { strength: 15, speed: 20, intelligence: 25, aggression: 10, social: 30 },
+    traits: { strength: 15, speed: 20, intelligence: 25, aggression: 10, social: 30, warStrategy: 8 },
 
     // Basic Identification
     genus: 'Martialis',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Martialis_heureka_CASENT0106181_1.jpg',
     distribution: 'Amazon rainforest, Manaus region, Brazil (known from a single locality)',
     primaryHabitat: 'subterranean',
 

@@ -180,8 +180,8 @@
 }
 
 .mini-trait-bar {
-  height: 3px;
-  background: var(--white-5);
+  height: 4px;
+  background: var(--white-8);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -189,7 +189,7 @@
 .mini-trait-fill {
   height: 100%;
   border-radius: 2px;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .mini-trait-label {
@@ -197,7 +197,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--sand-muted);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .species-card-footer {
@@ -654,14 +654,59 @@
   flex-shrink: 0;
 }
 
-/* 3D Ant Model Viewer */
+/* Species Card Photo */
+.species-card-photo {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  background: radial-gradient(ellipse at center, rgba(40, 30, 20, 0.8), rgba(10, 8, 5, 0.95));
+}
+
+.species-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(1.05) contrast(1.1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.species-card:hover .species-card-img {
+  transform: scale(1.08);
+}
+
+/* Species photo on cards */
+.species-card-img {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--white-5);
+}
+
+.species-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.species-card:hover .species-card-img img {
+  transform: scale(1.08);
+}
+
+/* 3D Ant Model Viewer on cards */
 .species-card-3d {
   position: relative;
   width: 100%;
-  height: 160px;
+  height: 180px;
   overflow: hidden;
   cursor: grab;
   border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
 }
 
 .species-card-3d:active {
@@ -719,6 +764,8 @@
   .detail-grid { grid-template-columns: 1fr; }
   .species-controls { flex-direction: column; gap: var(--sp-md); }
   .filter-pills { flex-wrap: wrap; justify-content: center; }
+  .species-card-img { height: 120px; }
   .species-card-3d { height: 120px; }
+  .species-card-photo { height: 140px; }
   .detail-3d-viewer { height: 200px; }
 }

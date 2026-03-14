@@ -1268,19 +1268,10 @@ function ColonyScene({ onChamberSelect, hoveredChamber, selectedChamber, setHove
       <Environment preset="apartment" environmentIntensity={0.1} />
 
       {/* Underground fog */}
-      <UndergroundFog />
+      {/* UndergroundFog removed for 360° viewing */}
 
-      {/* Earth layers background */}
-      <EarthLayers />
-
-      {/* Tree roots growing through soil */}
-      <TreeRoots />
-
-      {/* Surface grass and mound */}
+      {/* Surface grass and mound (no earth wall — free orbit) */}
       <SurfaceDetails />
-
-      {/* Light shaft from entrance */}
-      <LightShaft />
 
       {/* Floating dust motes */}
       <DustMotes />
@@ -1314,10 +1305,8 @@ function ColonyScene({ onChamberSelect, hoveredChamber, selectedChamber, setHove
       <OrbitControls
         enablePan={true}
         enableZoom={true}
-        maxPolarAngle={Math.PI / 1.8}
-        minPolarAngle={Math.PI / 4}
-        minDistance={4}
-        maxDistance={16}
+        minDistance={3}
+        maxDistance={20}
         target={[0, -3.8, 0]}
         dampingFactor={0.1}
         enableDamping

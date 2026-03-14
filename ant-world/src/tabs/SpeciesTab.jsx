@@ -25,6 +25,16 @@ function TraitBar({ label, value, color }) {
   );
 }
 
+// Readable short labels for trait keys
+const traitLabels = {
+  strength: 'STR',
+  speed: 'SPE',
+  intelligence: 'INT',
+  aggression: 'AGG',
+  social: 'SOC',
+  warStrategy: 'WAR',
+};
+
 function SpeciesCard({ sp, isSelected, onClick, index }) {
   const dragRef = useRef({ x: 0, y: 0, dragged: false });
 
@@ -58,8 +68,8 @@ function SpeciesCard({ sp, isSelected, onClick, index }) {
       layout
     >
       <div className="species-card-accent" style={{ background: sp.color }} />
-      <div className="species-card-3d">
-        <AntModelViewer speciesId={sp.id} variant="card" accentColor={sp.color} />
+      <div className="species-card-img">
+        <img src={sp.imageUrl} alt={sp.name} loading="lazy" draggable={false} />
       </div>
       <div className="species-card-body">
         <div className="species-card-top">
@@ -74,7 +84,7 @@ function SpeciesCard({ sp, isSelected, onClick, index }) {
               <div className="mini-trait-bar">
                 <div className="mini-trait-fill" style={{ width: `${val}%`, background: sp.color }} />
               </div>
-              <span className="mini-trait-label">{key.slice(0, 3)}</span>
+              <span className="mini-trait-label">{traitLabels[key] || key.slice(0, 3)}</span>
             </div>
           ))}
         </div>
@@ -206,6 +216,7 @@ function SpeciesDetail({ sp, onClose }) {
     intelligence: '#6b8cce',
     aggression: '#b22222',
     social: '#daa520',
+    warStrategy: '#8b0000',
   };
 
   const sections = [
