@@ -82,7 +82,7 @@ function SpeciesCard({ sp, isSelected, onClick, index }) {
           {Object.entries(sp.traits).map(([key, val]) => (
             <div key={key} className="mini-trait">
               <div className="mini-trait-bar">
-                <div className="mini-trait-fill" style={{ width: `${val}%`, background: sp.color }} />
+                <div className="mini-trait-fill" style={{ width: `${val}%`, background: '#F5A623' }} />
               </div>
               <span className="mini-trait-label">{traitLabels[key] || key.slice(0, 3)}</span>
             </div>
@@ -179,7 +179,7 @@ function AttributeGaugeRow({ label, value, color }) {
           initial={{ width: 0 }}
           animate={{ width: `${rating}%` }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          style={{ background: `linear-gradient(90deg, ${color}88, ${color})` }}
+          style={{ background: '#F5A623' }}
         />
         <div className="attr-gauge-markers">
           {[25, 50, 75].map(p => (
@@ -435,7 +435,7 @@ function CompareView({ speciesA, speciesB }) {
                 initial={{ width: 0 }}
                 animate={{ width: `${speciesA.traits[trait]}%` }}
                 transition={{ duration: 0.6 }}
-                style={{ background: speciesA.color }}
+                style={{ background: '#F5A623' }}
               />
             </div>
             <span className="compare-trait-label">{trait}</span>
@@ -445,7 +445,7 @@ function CompareView({ speciesA, speciesB }) {
                 initial={{ width: 0 }}
                 animate={{ width: `${speciesB.traits[trait]}%` }}
                 transition={{ duration: 0.6 }}
-                style={{ background: speciesB.color }}
+                style={{ background: '#F5A623' }}
               />
             </div>
           </div>

@@ -555,6 +555,7 @@
 .trait-fill {
   height: 100%;
   border-radius: 3px;
+  opacity: 1;
 }
 
 .trait-value {
